@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onJankenButtonTapped(View view){
         Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("MY_HAND",view.getId());     //インテントに追加情報を格納する。
         startActivity(intent);
     }
 }
