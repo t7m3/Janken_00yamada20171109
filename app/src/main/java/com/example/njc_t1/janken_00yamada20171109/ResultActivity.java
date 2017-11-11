@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class ResultActivity extends AppCompatActivity {
+    //グー、チョキ、パーの設定
+    final int JANKEN_GU = 0;
+    final int JANKEN_CHOKI = 1;
+    final int JANKEN_PA = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,24 @@ public class ResultActivity extends AppCompatActivity {
                 myHandImageView.setImageResource(R.drawable.pa);
                 break;
             default:
+                break;
+        }
+
+        // コンピュータの手を決める（乱数）
+        int comHand =(int) (Math.random() * 3);
+
+        //コンピュータの手を表示する。
+        ImageView comHandImageView =
+                (ImageView) findViewById(R.id.com_hand_image);     //ImageViewの参照値を取得する。findViewById()メソッドで。
+        switch (comHand) {
+            case JANKEN_GU:
+                comHandImageView.setImageResource(R.drawable.com_gu);     //グーの画像を表示する
+                break;
+            case JANKEN_CHOKI:
+                comHandImageView.setImageResource(R.drawable.com_choki);     //チョキの画像を表示する
+                break;
+            case JANKEN_PA:
+                comHandImageView.setImageResource(R.drawable.com_pa);     //パーの画像を表示する
                 break;
         }
     }
